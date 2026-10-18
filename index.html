@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#070b12">
+  <meta name="description" content="JARVIS — a private, offline-ready personal assistant prototype.">
+  <title>JARVIS • Personal AI</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/jarvis.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div>
+          <div class="brand-name">JARVIS<span class="brand-dot">.</span></div>
+          <div class="brand-sub">PERSONAL ASSISTANT / PROTOTYPE</div>
+        </div>
+      </div>
+      <div class="status-wrap">
+        <span id="status-dot" class="status-dot"></span>
+        <span id="connection-status">LOCAL MODE</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Assistant status">
+        <div class="reactor" aria-hidden="true">
+          <div class="reactor-ring ring-one"></div>
+          <div class="reactor-ring ring-two"></div>
+          <div class="reactor-ring ring-three"></div>
+          <div class="reactor-core"><span>J</span></div>
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        </div>
+        <p class="eyebrow">SYSTEM ONLINE <span class="pulse"></span></p>
+        <h1>At your service.</h1>
+        <p class="hero-copy">Your personal command centre.<br>Works offline for local tasks and memory.</p>
+        <div class="hero-chips">
+          <span><i></i> Local memory</span>
+          <span><i></i> Offline commands</span>
+          <span><i></i> AI not connected</span>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">COMMAND INTERFACE</p>
+            <h2>Conversation</h2>
+          </div>
+          <button id="clear-chat" class="icon-button" type="button" aria-label="Clear conversation" title="Clear conversation">↺</button>
+        </div>
+
+        <div id="chat-log" class="chat-log" role="log" aria-live="polite" aria-label="Conversation">
+          <article class="message assistant">
+            <div class="avatar">J</div>
+            <div class="bubble-wrap">
+              <div class="message-label">JARVIS <span>LOCAL CORE</span></div>
+              <div class="bubble">Systems initialized. I can help with local notes, tasks, time, date, and basic commands while offline. Type <b>help</b> to see what I can do.</div>
+              <time class="message-time">NOW</time>
+            </div>
+          </article>
+        </div>
+
+        <div class="quick-actions" aria-label="Quick commands">
+          <button type="button" data-command="help">⌘ Help</button>
+          <button type="button" data-command="time">◷ Time</button>
+          <button type="button" data-command="notes">▤ My notes</button>
+          <button type="button" data-command="tasks">✓ My tasks</button>
+        </div>
+
+        <form id="chat-form" class="composer">
+          <label class="sr-only" for="message-input">Message JARVIS</label>
+          <textarea id="message-input" rows="1" maxlength="1200" placeholder="Enter a command..." autocomplete="off"></textarea>
+          <button id="send-button" class="send-button" type="submit" aria-label="Send message"><span>↑</span></button>
+        </form>
+        <p class="composer-hint">ENTER TO SEND · SHIFT + ENTER FOR NEW LINE</p>
+      </section>
+
+      <section class="memory-panel">
+        <div class="section-heading compact">
+          <div><p class="eyebrow">PERSONAL DATA</p><h2>Local memory</h2></div>
+          <span class="privacy-tag">ON DEVICE</span>
+        </div>
+        <p class="memory-description">Notes and tasks are stored in this browser on this device using IndexedDB. They are not synced to a server.</p>
+        <div class="memory-stats">
+          <div class="stat-card"><span class="stat-icon">▤</span><div><strong id="note-count">0</strong><span>Saved notes</span></div></div>
+          <div class="stat-card"><span class="stat-icon">✓</span><div><strong id="task-count">0</strong><span>Open tasks</span></div></div>
+        </div>
+        <div class="memory-buttons">
+          <button id="export-data" class="secondary-button" type="button">Export memory</button>
+          <button id="erase-data" class="danger-button" type="button">Erase memory</button>
+        </div>
+      </section>
+    </main>
+    <footer><span>JARVIS PERSONAL SYSTEMS</span><span>BUILD 0.1.0 · LOCAL PROTOTYPE</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js" defer></script>
+</body>
+</html>
